@@ -13,12 +13,15 @@ COMPLETO = "https://pay.wiapy.com/4elkccmPqraG"  # Super Oferta R$ 27,00
 BASICO = "https://pay.wiapy.com/u00_xMT2QtAs"    # Oferta Básica R$ 16,00
 
 VARIACOES = {
-    "1": {"completo": COMPLETO, "basico": BASICO},
-    "2": {"completo": COMPLETO, "basico": BASICO},
-    "3": {"completo": COMPLETO, "basico": BASICO},
-    "4": {"completo": COMPLETO, "basico": BASICO},
-    "g": {"completo": COMPLETO, "basico": BASICO},  # Google Ads
+    "1": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
+    "2": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
+    "3": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
+    "4": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
+    "g": {"completo": COMPLETO, "basico": BASICO, "pixel": True},  # Google Ads
 }
+
+# Bloco do pixel da UTMify (window.pixelId + pixel.js)
+PIXEL = re.compile(r'\n  <script>\s*window\.pixelId = .*?</script>\n', re.S)
 
 
 def main():
@@ -31,6 +34,9 @@ def main():
     for pasta, links in VARIACOES.items():
         h = html.replace(f'href="{COMPLETO}"', f'href="{links["completo"]}"')
         h = h.replace(f'href="{BASICO}"', f'href="{links["basico"]}"')
+        if not links["pixel"]:
+            h, n = PIXEL.subn("\n", h)
+            assert n == 1 and "pixel.js" not in h
         os.makedirs(os.path.join(RAIZ, pasta), exist_ok=True)
         with open(os.path.join(RAIZ, pasta, "index.html"), "w", encoding="utf-8") as f:
             f.write(h)
