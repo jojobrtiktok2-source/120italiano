@@ -13,7 +13,7 @@
   // Checkout recebe os parâmetros da URL (utm, fbclid...)
   var busca = window.location.search.replace(/^\?/, "");
   if (busca) {
-    document.querySelectorAll('a[href*="pay.wiapy.com"]').forEach(function (a) {
+    document.querySelectorAll('a[href*="pay.wiapy.com"], a[href*="pay.cakto.com.br"]').forEach(function (a) {
       a.href = a.href + (a.href.indexOf("?") >= 0 ? "&" : "?") + busca;
     });
   }
