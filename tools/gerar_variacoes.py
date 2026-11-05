@@ -24,10 +24,13 @@ VARIACOES = {
 GTM = """
   <!-- Google Tag Manager -->
   <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5VBN6BFN"></script>
+  <!-- Google tag (gtag.js) - Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18483685352"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    gtag('config', 'AW-18483685352');
   </script>
   <!-- /Google Tag Manager -->"""
 CHARSET = '<meta charset="UTF-8" />'
