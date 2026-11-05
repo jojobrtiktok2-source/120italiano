@@ -13,7 +13,7 @@ COMPLETO = "https://pay.wiapy.com/4elkccmPqraG"  # Super Oferta R$ 27,00
 BASICO = "https://pay.wiapy.com/u00_xMT2QtAs"    # Oferta Básica R$ 16,00
 
 VARIACOES = {
-    "1": {"completo": COMPLETO, "basico": "https://pay.cakto.com.br/3cogsm3", "pixel": False},
+    "1": {"completo": COMPLETO + "?src=checkout1", "basico": "https://pay.cakto.com.br/3cogsm3?src=checkout1", "pixel": False},
     "2": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
     "3": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
     "4": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
