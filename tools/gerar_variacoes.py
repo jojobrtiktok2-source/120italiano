@@ -17,8 +17,20 @@ VARIACOES = {
     "2": {"completo": "https://pay.cakto.com.br/bkxhrss_1284071?src=checkout2", "basico": "https://pay.cakto.com.br/3cogsm3_1283903?src=checkout2", "pixel": False},
     "3": {"completo": "https://pay.cakto.com.br/bkxhrss_1284069?src=checkout3", "basico": "https://pay.cakto.com.br/3cogsm3_1283907?src=checkout3", "pixel": False},
     "4": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
-    "g": {"completo": "https://pay.cakto.com.br/bkxhrss_1284520", "basico": "https://pay.cakto.com.br/3cogsm3_1284507", "pixel": True},  # Google Ads
+    "g": {"completo": "https://pay.cakto.com.br/bkxhrss_1284520", "basico": "https://pay.cakto.com.br/3cogsm3_1284507", "pixel": True, "gtm": True},  # Google Ads
 }
+
+# Google Tag Manager, só no /g (entra logo depois do <meta charset>)
+GTM = """
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5VBN6BFN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <!-- /Google Tag Manager -->"""
+CHARSET = '<meta charset="UTF-8" />'
 
 # Bloco do pixel da UTMify (window.pixelId + pixel.js)
 PIXEL = re.compile(r'\n  <script>\s*window\.pixelId = .*?</script>\n', re.S)
@@ -37,6 +49,9 @@ def main():
         if not links["pixel"]:
             h, n = PIXEL.subn("\n", h)
             assert n == 1 and "pixel.js" not in h
+        if links.get("gtm"):
+            assert h.count(CHARSET) == 1
+            h = h.replace(CHARSET, CHARSET + GTM)
         os.makedirs(os.path.join(RAIZ, pasta), exist_ok=True)
         with open(os.path.join(RAIZ, pasta, "index.html"), "w", encoding="utf-8") as f:
             f.write(h)
