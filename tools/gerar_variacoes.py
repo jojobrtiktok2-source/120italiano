@@ -13,9 +13,9 @@ COMPLETO = "https://pay.wiapy.com/4elkccmPqraG"  # Super Oferta R$ 27,00
 BASICO = "https://pay.wiapy.com/u00_xMT2QtAs"    # Oferta Básica R$ 16,00
 
 VARIACOES = {
-    "1": {"completo": COMPLETO + "?src=checkout1", "basico": "https://pay.cakto.com.br/3cogsm3?src=checkout1", "pixel": False},
-    "2": {"completo": COMPLETO, "basico": "https://pay.cakto.com.br/3cogsm3_1283903?src=checkout2", "pixel": False},
-    "3": {"completo": COMPLETO, "basico": "https://pay.cakto.com.br/3cogsm3_1283907?src=checkout3", "pixel": False},
+    "1": {"completo": "https://pay.cakto.com.br/bkxhrss_1283823?src=checkout1", "basico": "https://pay.cakto.com.br/3cogsm3?src=checkout1", "pixel": False},
+    "2": {"completo": "https://pay.cakto.com.br/bkxhrss_1284071?src=checkout2", "basico": "https://pay.cakto.com.br/3cogsm3_1283903?src=checkout2", "pixel": False},
+    "3": {"completo": "https://pay.cakto.com.br/bkxhrss_1284069?src=checkout3", "basico": "https://pay.cakto.com.br/3cogsm3_1283907?src=checkout3", "pixel": False},
     "4": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
     "g": {"completo": COMPLETO, "basico": BASICO, "pixel": True},  # Google Ads
 }
