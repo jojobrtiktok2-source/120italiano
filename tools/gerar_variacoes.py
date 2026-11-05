@@ -17,7 +17,7 @@ VARIACOES = {
     "2": {"completo": "https://pay.cakto.com.br/bkxhrss_1284071?src=checkout2", "basico": "https://pay.cakto.com.br/3cogsm3_1283903?src=checkout2", "pixel": False},
     "3": {"completo": "https://pay.cakto.com.br/bkxhrss_1284069?src=checkout3", "basico": "https://pay.cakto.com.br/3cogsm3_1283907?src=checkout3", "pixel": False},
     "4": {"completo": COMPLETO, "basico": BASICO, "pixel": False},
-    "g": {"completo": COMPLETO, "basico": BASICO, "pixel": True},  # Google Ads
+    "g": {"completo": COMPLETO, "basico": "https://pay.cakto.com.br/3cogsm3_1284507?src=checkoutg", "pixel": True},  # Google Ads
 }
 
 # Bloco do pixel da UTMify (window.pixelId + pixel.js)
